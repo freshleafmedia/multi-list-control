@@ -1,0 +1,8 @@
+{
+  "name": "multi-list-control",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:freshleafmedia/multi-list-control.git",
+  "author": "Joe Strong <joe@freshleafmedia.co.uk>",
+  "license": "MIT"
+}
