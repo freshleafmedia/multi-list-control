@@ -1,8 +1,19 @@
 {
-  "name": "multi-list-control",
+  "name": "@freshleafmedia/multi-list-control",
   "version": "0.1.0",
   "main": "index.js",
-  "repository": "git@github.com:freshleafmedia/multi-list-control.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/freshleafmedia/multi-list-control.git"
+  },
   "author": "Joe Strong <joe@freshleafmedia.co.uk>",
-  "license": "MIT"
+  "license": "MIT",
+  "description": "## Overview",
+  "bugs": {
+    "url": "https://github.com/freshleafmedia/multi-list-control/issues"
+  },
+  "homepage": "https://github.com/freshleafmedia/multi-list-control#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
