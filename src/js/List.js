@@ -1,6 +1,8 @@
 export default class List {
   constructor(element, options) {
-    this.options = Object.assign({}, options);
+    this.options = Object.assign({
+      data: null
+    }, options);
     this.wrapper = element;
     this.listOptions = new Map();
     this.optionListEl = null;
@@ -86,12 +88,24 @@ export default class List {
 
   readOptionsFromInput(input) {
     this.listOptions.clear();
-    input.querySelectorAll('option').forEach(option => {
-      if (option.selected === false) {
+    input.querySelectorAll('option').forEach(optionEl => {
+      if (optionEl.selected === false) {
         return;
       }
 
-      this.listOptions.set(option.value, { name: option.textContent, id: option.value });
+      const newOption = { name: optionEl.textContent, id: optionEl.value };
+
+      if (this.options.data) {
+        this.options.data.forEach(dataKey => {
+          if (!optionEl.dataset[dataKey]) {
+            return;
+          }
+
+          newOption[dataKey] = optionEl.dataset[dataKey];
+        });
+      }
+
+      this.listOptions.set(newOption.id, newOption);
     });
 
     this.renderList();
@@ -197,5 +211,13 @@ export default class List {
 
   removeDragPlaceholder() {
     this.optionListEl.removeChild(this.dragPlaceholder);
+  }
+
+  /**
+   * Get all the selected options
+   * @return {Map} A Map of all the options
+   */
+  getOptions() {
+    return this.listOptions;
   }
 }
