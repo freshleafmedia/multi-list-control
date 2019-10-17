@@ -212,4 +212,12 @@ export default class List {
   removeDragPlaceholder() {
     this.optionListEl.removeChild(this.dragPlaceholder);
   }
+
+  /**
+   * Get all the selected options
+   * @return {Map} A Map of all the options
+   */
+  getOptions() {
+    return this.listOptions;
+  }
 }

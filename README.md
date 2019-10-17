@@ -67,7 +67,7 @@ new MultiListControl(el, {
 
 A list of keys of additional data to accept. The data can be read from a data-attribute and from an ajax response.
 
-The data can be used when rendering using the `markup` option
+The data can be used when rendering using the `markup` option, and can be retreived when using the `getSelected` method
 
 ```javascript
 new MultiListControl(el, {
@@ -83,3 +83,18 @@ new MultiListControl(el, {
 - Safari
 - Opera
 - Internet Explorer 11
+
+## Methods
+
+### getSelected()
+
+**Return:** `Map`
+
+Returns a `Map` of selected options
+
+```javascript
+const multiList = new MultiListControl(el);
+multiList.getSelected();
+
+// Returns: Map([{id: 1, name: 'item'}])
+```

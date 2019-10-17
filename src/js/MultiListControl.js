@@ -20,6 +20,14 @@ export default class MultiListControl {
     this.initState();
   }
 
+  /**
+   * Get the selected options
+   * @return {Map} A Map of all the options
+   */
+  getSelected() {
+    return this.list.getOptions();
+  }
+
   initStyle() {
     this.nativeInput.style.display = 'none';
 
