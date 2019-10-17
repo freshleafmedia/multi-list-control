@@ -61,6 +61,20 @@ new MultiListControl(el, {
 });
 ```
 
+### data
+
+**Type:** `Array` **Default:** `null`
+
+A list of keys of additional data to accept. The data can be read from a data-attribute and from an ajax response.
+
+The data can be used when rendering using the `markup` option
+
+```javascript
+new MultiListControl(el, {
+  data: ['description']
+});
+```
+
 ## Supported Browsers
 
 - Chrome

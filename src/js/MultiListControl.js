@@ -7,7 +7,8 @@ export default class MultiListControl {
       ajaxOptions: null,
       markup: {
         item: option => `<div class="MultiList__Item"><span>${option.name}</span><span class="MultiList__Close">x</span></div>`
-      }
+      },
+      data: null
     }, options);
     this.wrapper = document.createElement('div');
     this.wrapperClassName = 'MultiList';
@@ -33,14 +34,16 @@ export default class MultiListControl {
       onOptionRemovedCallback: this.onOptionRemoved.bind(this),
       markup: {
         item: this.options.markup.item
-      }
+      },
+      data: this.options.data
     });
 
     const selectorEl = document.createElement('div');
     this.wrapper.appendChild(selectorEl);
     this.selector = new Selector(selectorEl, {
       onOptionSelectedCallback: this.onOptionSelected.bind(this),
-      ajaxOptions: this.options.ajaxOptions
+      ajaxOptions: this.options.ajaxOptions,
+      data: this.options.data
     });
   }
 
