@@ -113,6 +113,15 @@ export default class List {
 
     renderList() {
         this.optionListEl.innerHTML = '';
+
+        if (this.listOptions.size === 0) {
+            const messageEl = document.createElement('div');
+            messageEl.className = "MultiList__Message";
+            messageEl.textContent = 'No items selected';
+            this.optionListEl.appendChild(messageEl);
+            return;
+        }
+
         this.listOptions.forEach((option, key, map) => {
             const optionEl = document.createElement('li');
             optionEl.innerHTML = this.options.markup.item.call(this, option);
