@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - eslint config
+- Message when not items selected
 
 ### Fixed
 - Code style fixes
