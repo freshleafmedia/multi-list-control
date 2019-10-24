@@ -44,7 +44,6 @@ export default class Selector {
         this.overlayEl.addEventListener('click', e => {
             this.closeSuggestionsDropdown();
         });
-
         let timer = 0;
         this.inputEl.addEventListener('keyup', e => {
             window.clearTimeout(timer);
@@ -52,7 +51,11 @@ export default class Selector {
                 this.onFinishedTyping();
             }, this.options.searchDebounce);
         });
-
+        this.inputEl.addEventListener('keypress', e => {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+        });
         this.suggestionsEl.addEventListener('click', e => {
             if (e.target.nodeName !== 'LI') {
                 return;
