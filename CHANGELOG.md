@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- eslint config
-- Message when not items selected
 - maxSelected option
 - searchDebounce option
+- eslint config
+- Message when not items selected
+- Selector loading spinner
 
 ### Fixed
 - Code style fixes
 - Adds debounce to suggestions search
+- Clears suggestions list before repopulating with new suggestions
+- Makes suggestions dropdown only show when suggestions available
 
 ## [0.2.0] - 2019-10-17
 ### Added
