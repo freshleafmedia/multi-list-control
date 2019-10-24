@@ -45,6 +45,20 @@ new MultiListControl(el, {
 });
 ```
 
+### maxSelected
+
+**Type:** `Integer` **Default:** `null`
+
+Specifies the max number of items to allow to be selected.
+
+**Example:**
+
+```javascript
+new MultiListControl(el, {
+  maxSelected: 3
+});
+```
+
 ### markup.item
 
 **Type:** `Function` **Default:** `Function`

@@ -5,6 +5,7 @@ export default class MultiListControl {
     constructor(element, options) {
         this.options = Object.assign({
             ajaxOptions: null,
+            maxSelected: null,
             markup: {
                 item: option => `<div class="MultiList__Item"><span>${option.name}</span><span class="MultiList__Close">x</span></div>`
             },
@@ -38,6 +39,7 @@ export default class MultiListControl {
         const listEl = document.createElement('div');
         this.wrapper.appendChild(listEl);
         this.list = new List(listEl, {
+            maxSelected: this.options.maxSelected,
             onOptionsChangedCallback: this.onOptionsChanged.bind(this),
             onOptionRemovedCallback: this.onOptionRemoved.bind(this),
             markup: {
