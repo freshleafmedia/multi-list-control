@@ -128,6 +128,7 @@ export default class Selector {
 
         if (this.options.ajaxOptions) {
             this.options.ajaxOptions.call(this, searchQuery, results => {
+                this.listOptions.clear();
                 results.forEach(option => {
                     this.listOptions.set(option.id, option);
                 });
