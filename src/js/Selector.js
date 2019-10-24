@@ -1,13 +1,15 @@
 export default class Selector {
     constructor(element, options) {
         this.options = Object.assign({
-            ajaxOptions: null
+            ajaxOptions: null,
+            searchDebounce: 300
         }, options);
         this.wrapper = element;
         this.listOptions = new Map();
         this.inputEl = null;
         this.suggestionsEl = null;
         this.onOptionSelectedCallback = options.onOptionSelectedCallback || null;
+        this.loaderEl = null;
 
         this.initStyle();
         this.initEvents();
@@ -25,6 +27,10 @@ export default class Selector {
         this.inputEl.placeholder = 'Search...';
         inputWrapper.appendChild(this.inputEl);
 
+        this.loaderEl = document.createElement('div');
+        this.loaderEl.className = 'MultiList__Selector__Loader';
+        this.wrapper.appendChild(this.loaderEl);
+
         this.suggestionsEl = document.createElement('ul');
         this.suggestionsEl.className = 'MultiList__Selector__SuggestionsList';
         this.suggestionsEl.style.display = 'none';
@@ -38,13 +44,24 @@ export default class Selector {
 
     initEvents() {
         this.inputEl.addEventListener('focus', e => {
-            this.openSuggestionsDropdown();
+            if (this.listOptions.size > 0) {
+                this.openSuggestionsDropdown();
+            }
         });
         this.overlayEl.addEventListener('click', e => {
             this.closeSuggestionsDropdown();
         });
+        let timer = 0;
+        this.inputEl.addEventListener('keyup', e => {
+            window.clearTimeout(timer);
+            timer = window.setTimeout(_ => {
+                this.onFinishedTyping();
+            }, this.options.searchDebounce);
+        });
         this.inputEl.addEventListener('keypress', e => {
-            this.onKeyPress();
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
         });
         this.suggestionsEl.addEventListener('click', e => {
             if (e.target.nodeName !== 'LI') {
@@ -109,7 +126,7 @@ export default class Selector {
         this.overlayEl.style.display = 'none';
     }
 
-    onKeyPress() {
+    onFinishedTyping() {
         const searchQuery = this.inputEl.value;
 
         if (searchQuery === '') {
@@ -117,11 +134,19 @@ export default class Selector {
         }
 
         if (this.options.ajaxOptions) {
+            this.showLoader();
             this.options.ajaxOptions.call(this, searchQuery, results => {
+                this.hideLoader();
+                this.listOptions.clear();
                 results.forEach(option => {
                     this.listOptions.set(option.id, option);
                 });
                 this.renderList();
+                if (this.listOptions.size > 0) {
+                    this.openSuggestionsDropdown();
+                } else {
+                    this.closeSuggestionsDropdown();
+                }
             });
         }
     }
@@ -146,5 +171,13 @@ export default class Selector {
             this.inputEl.title = disabledReason;
         }
         this.closeSuggestionsDropdown();
+    }
+
+    showLoader() {
+        this.loaderEl.style.display = 'block';
+    }
+
+    hideLoader() {
+        this.loaderEl.style.display = 'none';
     }
 }
