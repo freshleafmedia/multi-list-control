@@ -41,6 +41,9 @@
       border: none;
       border-top: 1px solid #aaa;
       padding: 5px 10px;
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
     &__SuggestionsList {
       margin: 0;

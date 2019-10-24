@@ -1,6 +1,7 @@
 export default class List {
     constructor(element, options) {
         this.options = Object.assign({
+            maxSelected: null,
             data: null
         }, options);
         this.wrapper = element;
@@ -108,6 +109,7 @@ export default class List {
             this.listOptions.set(newOption.id, newOption);
         });
 
+        this.onOptionsChanged();
         this.renderList();
     }
 
@@ -132,6 +134,10 @@ export default class List {
     }
 
     add(option) {
+        if (this.options.maxSelected !== null && this.listOptions.size >= this.options.maxSelected) {
+            return;
+        }
+
         this.listOptions.set(option.id.toString(), option);
 
         this.onOptionsChanged();
