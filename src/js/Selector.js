@@ -9,6 +9,7 @@ export default class Selector {
         this.inputEl = null;
         this.suggestionsEl = null;
         this.onOptionSelectedCallback = options.onOptionSelectedCallback || null;
+        this.loaderEl = null;
 
         this.initStyle();
         this.initEvents();
@@ -25,6 +26,10 @@ export default class Selector {
         this.inputEl.type = 'text';
         this.inputEl.placeholder = 'Search...';
         inputWrapper.appendChild(this.inputEl);
+
+        this.loaderEl = document.createElement('div');
+        this.loaderEl.className = 'MultiList__Selector__Loader';
+        this.wrapper.appendChild(this.loaderEl);
 
         this.suggestionsEl = document.createElement('ul');
         this.suggestionsEl.className = 'MultiList__Selector__SuggestionsList';
@@ -129,7 +134,9 @@ export default class Selector {
         }
 
         if (this.options.ajaxOptions) {
+            this.showLoader();
             this.options.ajaxOptions.call(this, searchQuery, results => {
+                this.hideLoader();
                 this.listOptions.clear();
                 results.forEach(option => {
                     this.listOptions.set(option.id, option);
@@ -164,5 +171,13 @@ export default class Selector {
             this.inputEl.title = disabledReason;
         }
         this.closeSuggestionsDropdown();
+    }
+
+    showLoader() {
+        this.loaderEl.style.display = 'block';
+    }
+
+    hideLoader() {
+        this.loaderEl.style.display = 'none';
     }
 }
