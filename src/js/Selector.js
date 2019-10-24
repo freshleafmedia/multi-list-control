@@ -8,6 +8,7 @@ export default class Selector {
         this.inputEl = null;
         this.suggestionsEl = null;
         this.onOptionSelectedCallback = options.onOptionSelectedCallback || null;
+        this.debounceDelay = 300;
 
         this.initStyle();
         this.initEvents();
@@ -43,9 +44,15 @@ export default class Selector {
         this.overlayEl.addEventListener('click', e => {
             this.closeSuggestionsDropdown();
         });
-        this.inputEl.addEventListener('keypress', e => {
-            this.onKeyPress();
+
+        let timer = 0;
+        this.inputEl.addEventListener('keyup', e => {
+            window.clearTimeout(timer);
+            timer = window.setTimeout(_ => {
+                this.onFinishedTyping();
+            }, this.debounceDelay);
         });
+
         this.suggestionsEl.addEventListener('click', e => {
             if (e.target.nodeName !== 'LI') {
                 return;
@@ -109,7 +116,7 @@ export default class Selector {
         this.overlayEl.style.display = 'none';
     }
 
-    onKeyPress() {
+    onFinishedTyping() {
         const searchQuery = this.inputEl.value;
 
         if (searchQuery === '') {

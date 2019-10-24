@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Code style fixes
+- Adds debounce to suggestions search
 
 ## [0.2.0] - 2019-10-17
 ### Added
