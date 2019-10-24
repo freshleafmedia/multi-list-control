@@ -1,14 +1,14 @@
 export default class Selector {
     constructor(element, options) {
         this.options = Object.assign({
-            ajaxOptions: null
+            ajaxOptions: null,
+            searchDebounce: 300
         }, options);
         this.wrapper = element;
         this.listOptions = new Map();
         this.inputEl = null;
         this.suggestionsEl = null;
         this.onOptionSelectedCallback = options.onOptionSelectedCallback || null;
-        this.debounceDelay = 300;
 
         this.initStyle();
         this.initEvents();
@@ -50,7 +50,7 @@ export default class Selector {
             window.clearTimeout(timer);
             timer = window.setTimeout(_ => {
                 this.onFinishedTyping();
-            }, this.debounceDelay);
+            }, this.options.searchDebounce);
         });
 
         this.suggestionsEl.addEventListener('click', e => {

@@ -59,6 +59,20 @@ new MultiListControl(el, {
 });
 ```
 
+### searchDebounce
+
+**Type:** `Integer` **Default:** `300`
+
+Number of milliseconds to debounce the search suggestions
+
+**Example:**
+
+```javascript
+new MultiListControl(el, {
+  searchDebounce: 300
+});
+```
+
 ### markup.item
 
 **Type:** `Function` **Default:** `Function`

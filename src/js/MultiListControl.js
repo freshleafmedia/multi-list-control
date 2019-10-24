@@ -6,6 +6,7 @@ export default class MultiListControl {
         this.options = Object.assign({
             ajaxOptions: null,
             maxSelected: null,
+            searchDebounce: 300,
             markup: {
                 item: option => `<div class="MultiList__Item"><span>${option.name}</span><span class="MultiList__Close">x</span></div>`
             },
@@ -53,6 +54,7 @@ export default class MultiListControl {
         this.selector = new Selector(selectorEl, {
             onOptionSelectedCallback: this.onOptionSelected.bind(this),
             ajaxOptions: this.options.ajaxOptions,
+            searchDebounce: this.options.searchDebounce,
             data: this.options.data
         });
     }

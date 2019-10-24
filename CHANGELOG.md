@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - eslint config
 - Message when not items selected
 - maxSelected option
+- searchDebounce option
 
 ### Fixed
 - Code style fixes
