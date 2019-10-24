@@ -134,4 +134,17 @@ export default class Selector {
             this.onOptionSelectedCallback.call(this, option);
         }
     }
+
+    enable() {
+        this.inputEl.disabled = false;
+        this.inputEl.title = '';
+    }
+
+    disable(disabledReason) {
+        this.inputEl.disabled = true;
+        if (disabledReason) {
+            this.inputEl.title = disabledReason;
+        }
+        this.closeSuggestionsDropdown();
+    }
 }

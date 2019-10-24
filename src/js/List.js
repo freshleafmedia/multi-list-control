@@ -109,6 +109,7 @@ export default class List {
             this.listOptions.set(newOption.id, newOption);
         });
 
+        this.onOptionsChanged();
         this.renderList();
     }
 

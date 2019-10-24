@@ -68,6 +68,12 @@ export default class MultiListControl {
 
     onOptionsChanged(options) {
         this.commitToNativeInput(options);
+
+        if (this.list.getOptions().size >= this.options.maxSelected) {
+            this.selector.disable(`You cannot select more than ${this.options.maxSelected} items`);
+        } else {
+            this.selector.enable();
+        }
     }
 
     onOptionRemoved(option) {
