@@ -39,7 +39,9 @@ export default class Selector {
 
     initEvents() {
         this.inputEl.addEventListener('focus', e => {
-            this.openSuggestionsDropdown();
+            if (this.listOptions.size > 0) {
+                this.openSuggestionsDropdown();
+            }
         });
         this.overlayEl.addEventListener('click', e => {
             this.closeSuggestionsDropdown();
@@ -133,6 +135,11 @@ export default class Selector {
                     this.listOptions.set(option.id, option);
                 });
                 this.renderList();
+                if (this.listOptions.size > 0) {
+                    this.openSuggestionsDropdown();
+                } else {
+                    this.closeSuggestionsDropdown();
+                }
             });
         }
     }
