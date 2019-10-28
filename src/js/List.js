@@ -58,6 +58,9 @@ export default class List {
         });
         this.optionListEl.addEventListener('dragenter', e => {
             e.preventDefault();
+            if (e.target.nodeType !== Node.ELEMENT_NODE) {
+                return;
+            }
             const el = e.target.closest('li');
             if (el === null || el === this.dragOverTarget) {
                 return;
@@ -69,6 +72,9 @@ export default class List {
         });
         this.optionListEl.addEventListener('dragover', e => {
             e.preventDefault();
+            if (e.target.nodeType !== Node.ELEMENT_NODE) {
+                return;
+            }
             const el = e.target.closest('li');
             this.dragTimeCount++;
             if (el === null || this.dragTimeCount % 3 !== 0) {
