@@ -84,7 +84,7 @@ export default class Selector {
                 return;
             }
 
-            const newOption = { name: optionEl.textContent, id: optionEl.value };
+            const newOption = { name: optionEl.textContent, id: String(optionEl.value) };
 
             if (this.options.data) {
                 this.options.data.forEach(dataKey => {
@@ -139,6 +139,11 @@ export default class Selector {
             this.options.ajaxOptions.call(this, searchQuery, results => {
                 this.hideLoader();
                 this.listOptions.clear();
+                results = results.map(option => {
+                    option.id = String(option.id);
+
+                    return option;
+                });
                 if (this.options.onSuggestionsLoadedCallback) {
                     results = this.options.onSuggestionsLoadedCallback.call(this, results);
                 }

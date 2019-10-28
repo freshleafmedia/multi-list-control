@@ -94,7 +94,7 @@ export default class List {
                 return;
             }
 
-            const newOption = { name: optionEl.textContent, id: optionEl.value };
+            const newOption = { name: optionEl.textContent, id: String(optionEl.value) };
 
             if (this.options.data) {
                 this.options.data.forEach(dataKey => {
@@ -138,7 +138,7 @@ export default class List {
             return;
         }
 
-        this.listOptions.set(option.id.toString(), option);
+        this.listOptions.set(String(option.id), option);
 
         this.onOptionsChanged();
         this.renderList();
