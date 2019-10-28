@@ -146,7 +146,7 @@ multiList.getSelected();
 
 ### reset()
 
-Resets the selected items to its initial state
+Resets the selected items to its initial state, and resets the selector's search
 
 ```javascript
 const multiList = new MultiListControl(el);
