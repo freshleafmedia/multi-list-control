@@ -51,6 +51,7 @@ export default class List {
             }
             this.dragSource = e.target;
             window.requestAnimationFrame(_ => {
+                this.dragPlaceholder.style.height = this.dragSource.getBoundingClientRect().height + 'px';
                 this.dragSource.style.display = 'none';
                 this.positionDragPlaceholder(this.dragSource, e);
             });
