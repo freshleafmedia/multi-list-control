@@ -50,6 +50,10 @@ export default class List {
                 dt.setData('text', 'multilist-item');
             }
             this.dragSource = e.target;
+            window.requestAnimationFrame(_ => {
+                this.dragSource.style.display = 'none';
+                this.positionDragPlaceholder(this.dragSource, e);
+            });
         });
         this.optionListEl.addEventListener('dragenter', e => {
             e.preventDefault();
@@ -77,6 +81,7 @@ export default class List {
             e.preventDefault();
         });
         this.optionListEl.addEventListener('dragend', e => {
+            this.dragSource.style.display = 'block';
             this.dragPlaceholder.insertAdjacentElement('afterend', this.dragSource);
             if (this.dragOverDirection === 0) {
                 this.reorderItemBefore(this.dragSource.dataset.id, this.dragOverTarget.dataset.id);
