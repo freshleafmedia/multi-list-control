@@ -99,7 +99,7 @@ export default class MultiListControl {
     }
 
     commitToNativeInput(options) {
-        this.nativeInput.querySelectorAll('option:checked').forEach(optionEl => {
+        this.nativeInput.querySelectorAll('option').forEach(optionEl => {
             optionEl.remove();
         });
 
@@ -110,5 +110,10 @@ export default class MultiListControl {
             newOptionEl.selected = true;
             this.nativeInput.appendChild(newOptionEl);
         });
+    }
+
+    reset() {
+        this.list.reset();
+        this.selector.reset();
     }
 }

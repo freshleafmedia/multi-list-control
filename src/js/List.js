@@ -6,6 +6,7 @@ export default class List {
         }, options);
         this.wrapper = element;
         this.listOptions = new Map();
+        this.defaultListOptions = new Map();
         this.optionListEl = null;
         this.onOptionsChangedCallback = options.onOptionsChangedCallback || null;
         this.onOptionRemovedCallback = options.onOptionRemovedCallback || null;
@@ -121,6 +122,7 @@ export default class List {
             this.listOptions.set(newOption.id, newOption);
         });
 
+        this.defaultListOptions = new Map(this.listOptions);
         this.onOptionsChanged();
         this.renderList();
     }
@@ -261,5 +263,11 @@ export default class List {
             (this.options.maxSelected === null || this.listOptions.size < this.options.maxSelected)
             && this.optionIsSelected(option) === false
         );
+    }
+
+    reset() {
+        this.listOptions = new Map(this.defaultListOptions);
+        this.onOptionsChanged();
+        this.renderList();
     }
 }

@@ -190,4 +190,10 @@ export default class Selector {
     hideLoader() {
         this.loaderEl.style.display = 'none';
     }
+
+    reset() {
+        this.inputEl.value = '';
+        this.listOptions.clear();
+        this.closeSuggestionsDropdown();
+    }
 }

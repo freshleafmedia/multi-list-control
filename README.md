@@ -143,3 +143,12 @@ multiList.getSelected();
 
 // Returns: Map([{id: 1, name: 'item'}])
 ```
+
+### reset()
+
+Resets the selected items to its initial state, and resets the selector's search
+
+```javascript
+const multiList = new MultiListControl(el);
+multiList.reset();
+```
