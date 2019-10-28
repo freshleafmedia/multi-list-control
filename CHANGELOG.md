@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Message when not items selected
 - Selector loading spinner
 
+### Changed
+- Updates style of drag-and-drop ordering
+
 ### Fixed
 - Code style fixes
 - Adds debounce to suggestions search
