@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adds debounce to suggestions search
 - Clears suggestions list before repopulating with new suggestions
 - Makes suggestions dropdown only show when suggestions available
+- Prevents selecting an option that has already been selected
 
 ## [0.2.0] - 2019-10-17
 ### Added
