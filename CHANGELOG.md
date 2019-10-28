@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Message when not items selected
 - Selector loading spinner
 
+### Changed
+- Updates style of drag-and-drop ordering
+
 ### Fixed
 - Code style fixes
 - Adds debounce to suggestions search
@@ -20,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Makes suggestions dropdown only show when suggestions available
 - Prevents selecting an option that has already been selected
 - Fixes issues when using integer keys
+- Prevents drag-and-drop errors in Firefox
 
 ## [0.2.0] - 2019-10-17
 ### Added

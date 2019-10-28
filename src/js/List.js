@@ -50,9 +50,17 @@ export default class List {
                 dt.setData('text', 'multilist-item');
             }
             this.dragSource = e.target;
+            window.requestAnimationFrame(_ => {
+                this.dragPlaceholder.style.height = this.dragSource.getBoundingClientRect().height + 'px';
+                this.dragSource.style.display = 'none';
+                this.positionDragPlaceholder(this.dragSource, e);
+            });
         });
         this.optionListEl.addEventListener('dragenter', e => {
             e.preventDefault();
+            if (e.target.nodeType !== Node.ELEMENT_NODE) {
+                return;
+            }
             const el = e.target.closest('li');
             if (el === null || el === this.dragOverTarget) {
                 return;
@@ -64,6 +72,9 @@ export default class List {
         });
         this.optionListEl.addEventListener('dragover', e => {
             e.preventDefault();
+            if (e.target.nodeType !== Node.ELEMENT_NODE) {
+                return;
+            }
             const el = e.target.closest('li');
             this.dragTimeCount++;
             if (el === null || this.dragTimeCount % 3 !== 0) {
@@ -77,6 +88,7 @@ export default class List {
             e.preventDefault();
         });
         this.optionListEl.addEventListener('dragend', e => {
+            this.dragSource.style.display = 'block';
             this.dragPlaceholder.insertAdjacentElement('afterend', this.dragSource);
             if (this.dragOverDirection === 0) {
                 this.reorderItemBefore(this.dragSource.dataset.id, this.dragOverTarget.dataset.id);
