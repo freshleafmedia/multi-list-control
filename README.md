@@ -45,6 +45,34 @@ new MultiListControl(el, {
 });
 ```
 
+### maxSelected
+
+**Type:** `Integer` **Default:** `null`
+
+Specifies the max number of items to allow to be selected.
+
+**Example:**
+
+```javascript
+new MultiListControl(el, {
+  maxSelected: 3
+});
+```
+
+### searchDebounce
+
+**Type:** `Integer` **Default:** `300`
+
+Number of milliseconds to debounce the search suggestions
+
+**Example:**
+
+```javascript
+new MultiListControl(el, {
+  searchDebounce: 300
+});
+```
+
 ### markup.item
 
 **Type:** `Function` **Default:** `Function`
@@ -75,6 +103,23 @@ new MultiListControl(el, {
 });
 ```
 
+### strings
+
+**Type:** `Object`
+
+A list of strings that are used in the component.
+
+The example below lists the defaults.
+
+```javascript
+new MultiListControl(el, {
+  strings: {
+    searchPlaceholder: 'Search...',
+    maxSelectedError: 'You cannot select more than # items'
+  }
+});
+```
+
 ## Supported Browsers
 
 - Chrome
@@ -97,4 +142,13 @@ const multiList = new MultiListControl(el);
 multiList.getSelected();
 
 // Returns: Map([{id: 1, name: 'item'}])
+```
+
+### reset()
+
+Resets the selected items to its initial state, and resets the selector's search
+
+```javascript
+const multiList = new MultiListControl(el);
+multiList.reset();
 ```
