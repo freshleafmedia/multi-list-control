@@ -2,13 +2,14 @@ export default class Selector {
     constructor(element, options) {
         this.options = Object.assign({
             ajaxOptions: null,
+            onOptionSelectedCallback: null,
+            onSuggestionsLoadedCallback: null,
             searchDebounce: 300
         }, options);
         this.wrapper = element;
         this.listOptions = new Map();
         this.inputEl = null;
         this.suggestionsEl = null;
-        this.onOptionSelectedCallback = options.onOptionSelectedCallback || null;
         this.loaderEl = null;
 
         this.initStyle();
@@ -138,6 +139,9 @@ export default class Selector {
             this.options.ajaxOptions.call(this, searchQuery, results => {
                 this.hideLoader();
                 this.listOptions.clear();
+                if (this.options.onSuggestionsLoadedCallback) {
+                    results = this.options.onSuggestionsLoadedCallback.call(this, results);
+                }
                 results.forEach(option => {
                     this.listOptions.set(option.id, option);
                 });
@@ -155,8 +159,8 @@ export default class Selector {
         this.listOptions.delete(option.id);
         this.renderList();
 
-        if (this.onOptionSelectedCallback) {
-            this.onOptionSelectedCallback.call(this, option);
+        if (this.options.onOptionSelectedCallback) {
+            this.options.onOptionSelectedCallback.call(this, option);
         }
     }
 

@@ -134,7 +134,7 @@ export default class List {
     }
 
     add(option) {
-        if (this.options.maxSelected !== null && this.listOptions.size >= this.options.maxSelected) {
+        if (this.optionCanBeSelected(option) === false) {
             return;
         }
 
@@ -234,5 +234,20 @@ export default class List {
    */
     getOptions() {
         return this.listOptions;
+    }
+
+    /**
+     * Returns true if option is selected
+     * @param option
+     */
+    optionIsSelected(option) {
+        return this.listOptions.has(option.id);
+    }
+
+    optionCanBeSelected(option) {
+        return (
+            (this.options.maxSelected === null || this.listOptions.size < this.options.maxSelected)
+            && this.optionIsSelected(option) === false
+        );
     }
 }

@@ -53,6 +53,7 @@ export default class MultiListControl {
         this.wrapper.appendChild(selectorEl);
         this.selector = new Selector(selectorEl, {
             onOptionSelectedCallback: this.onOptionSelected.bind(this),
+            onSuggestionsLoadedCallback: this.onSuggestionsLoaded.bind(this),
             ajaxOptions: this.options.ajaxOptions,
             searchDebounce: this.options.searchDebounce,
             data: this.options.data
@@ -62,6 +63,12 @@ export default class MultiListControl {
     initState() {
         this.list.readOptionsFromInput(this.nativeInput);
         this.selector.readOptionsFromInput(this.nativeInput);
+    }
+
+    onSuggestionsLoaded(options) {
+        return options.filter(option => {
+            return this.list.optionCanBeSelected(option);
+        });
     }
 
     onOptionSelected(option) {
