@@ -114,5 +114,6 @@ export default class MultiListControl {
 
     reset() {
         this.list.reset();
+        this.selector.reset();
     }
 }
