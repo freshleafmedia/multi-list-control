@@ -103,6 +103,23 @@ new MultiListControl(el, {
 });
 ```
 
+### strings
+
+**Type:** `Object`
+
+A list of strings that are used in the component.
+
+The example below lists the defaults.
+
+```javascript
+new MultiListControl(el, {
+  strings: {
+    searchPlaceholder: 'Search...',
+    maxSelectedError: 'You cannot select more than # items'
+  }
+});
+```
+
 ## Supported Browsers
 
 - Chrome

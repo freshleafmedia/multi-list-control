@@ -25,7 +25,7 @@ export default class Selector {
 
         this.inputEl = document.createElement('input');
         this.inputEl.type = 'text';
-        this.inputEl.placeholder = 'Search...';
+        this.inputEl.placeholder = this.options.strings.searchPlaceholder;
         this.inputEl.autocomplete = 'off';
         inputWrapper.appendChild(this.inputEl);
 

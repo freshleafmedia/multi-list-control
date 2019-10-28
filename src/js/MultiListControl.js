@@ -3,6 +3,10 @@ import Selector from './Selector';
 
 export default class MultiListControl {
     constructor(element, options) {
+        const strings = Object.assign({
+            searchPlaceholder: 'Search...',
+            maxSelectedError: 'You cannot select more than # items'
+        }, options.strings);
         this.options = Object.assign({
             ajaxOptions: null,
             maxSelected: null,
@@ -10,8 +14,9 @@ export default class MultiListControl {
             markup: {
                 item: option => `<div class="MultiList__Item"><span>${option.name}</span><span class="MultiList__Close">x</span></div>`
             },
-            data: null
+            data: null,
         }, options);
+        this.options.strings = strings;
         this.wrapper = document.createElement('div');
         this.wrapperClassName = 'MultiList';
         this.nativeInput = element;
@@ -56,7 +61,11 @@ export default class MultiListControl {
             onSuggestionsLoadedCallback: this.onSuggestionsLoaded.bind(this),
             ajaxOptions: this.options.ajaxOptions,
             searchDebounce: this.options.searchDebounce,
-            data: this.options.data
+            data: this.options.data,
+            strings: {
+                searchPlaceholder: this.options.strings.searchPlaceholder,
+                maxSelectedError: this.options.strings.maxSelectedError
+            }
         });
     }
 
@@ -79,7 +88,7 @@ export default class MultiListControl {
         this.commitToNativeInput(options);
 
         if (this.list.getOptions().size >= this.options.maxSelected) {
-            this.selector.disable(`You cannot select more than ${this.options.maxSelected} items`);
+            this.selector.disable(this.options.strings.maxSelectedError.replace('#', this.options.maxSelected));
         } else {
             this.selector.enable();
         }
