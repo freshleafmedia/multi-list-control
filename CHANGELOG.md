@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clears suggestions list before repopulating with new suggestions
 - Makes suggestions dropdown only show when suggestions available
 - Prevents selecting an option that has already been selected
+- Fixes issues when using integer keys
 
 ## [0.2.0] - 2019-10-17
 ### Added
