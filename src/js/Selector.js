@@ -1,5 +1,5 @@
 export default class Selector {
-    constructor(element, options) {
+    constructor(element, options, multiListControl) {
         this.options = Object.assign({
             ajaxOptions: null,
             onOptionSelectedCallback: null,
@@ -11,6 +11,7 @@ export default class Selector {
         this.inputEl = null;
         this.suggestionsEl = null;
         this.loaderEl = null;
+        this.multiListControl = multiListControl;
 
         this.initStyle();
         this.initEvents();
@@ -137,7 +138,7 @@ export default class Selector {
 
         if (this.options.ajaxOptions) {
             this.showLoader();
-            this.options.ajaxOptions.call(this, searchQuery, results => {
+            this.options.ajaxOptions.call(this.multiListControl, this.multiListControl, searchQuery, results => {
                 this.hideLoader();
                 this.listOptions.clear();
                 results = results.map(option => {
