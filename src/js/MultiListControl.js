@@ -66,7 +66,7 @@ export default class MultiListControl {
                 searchPlaceholder: this.options.strings.searchPlaceholder,
                 maxSelectedError: this.options.strings.maxSelectedError
             }
-        });
+        }, this);
     }
 
     initState() {
