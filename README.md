@@ -33,11 +33,13 @@ Specify options as an object as the second parameter e.g. `new MultiListControl(
 
 A function executed when performing a suggestions search.
 
+The MultiListControl instance is available as the first parameter, and as `this`.
+
 **Example:**
 
 ```javascript
 new MultiListControl(el, {
-  ajaxOptions: (query, callback) => {
+  ajaxOptions: (multiListControl, query, callback) => {
     Axios.get('ajax?query=' + query).then(response => {
       callback(response.data);
     })
@@ -115,7 +117,8 @@ The example below lists the defaults.
 new MultiListControl(el, {
   strings: {
     searchPlaceholder: 'Search...',
-    maxSelectedError: 'You cannot select more than # items'
+    maxSelectedError: 'You cannot select more than # items',
+    noneSelected: 'No items selected'
   }
 });
 ```
