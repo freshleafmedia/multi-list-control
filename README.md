@@ -117,7 +117,8 @@ The example below lists the defaults.
 new MultiListControl(el, {
   strings: {
     searchPlaceholder: 'Search...',
-    maxSelectedError: 'You cannot select more than # items'
+    maxSelectedError: 'You cannot select more than # items',
+    noneSelected: 'No items selected'
   }
 });
 ```
