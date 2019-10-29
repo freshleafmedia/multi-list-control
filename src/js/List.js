@@ -133,7 +133,7 @@ export default class List {
         if (this.listOptions.size === 0) {
             const messageEl = document.createElement('div');
             messageEl.className = 'MultiList__Message';
-            messageEl.textContent = 'No items selected';
+            messageEl.textContent = this.options.strings.noneSelected;
             this.optionListEl.appendChild(messageEl);
             return;
         }

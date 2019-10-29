@@ -5,7 +5,8 @@ export default class MultiListControl {
     constructor(element, options) {
         const strings = Object.assign({
             searchPlaceholder: 'Search...',
-            maxSelectedError: 'You cannot select more than # items'
+            maxSelectedError: 'You cannot select more than # items',
+            noneSelected: 'No items selected'
         }, options.strings);
         this.options = Object.assign({
             ajaxOptions: null,
@@ -51,7 +52,8 @@ export default class MultiListControl {
             markup: {
                 item: this.options.markup.item
             },
-            data: this.options.data
+            data: this.options.data,
+            strings: this.options.strings
         });
 
         const selectorEl = document.createElement('div');
@@ -62,10 +64,7 @@ export default class MultiListControl {
             ajaxOptions: this.options.ajaxOptions,
             searchDebounce: this.options.searchDebounce,
             data: this.options.data,
-            strings: {
-                searchPlaceholder: this.options.strings.searchPlaceholder,
-                maxSelectedError: this.options.strings.maxSelectedError
-            }
+            strings: this.options.strings
         }, this);
     }
 
