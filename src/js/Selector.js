@@ -174,12 +174,15 @@ export default class Selector {
     enable() {
         this.inputEl.disabled = false;
         this.inputEl.title = '';
+        this.inputEl.placeholder = this.options.strings.searchPlaceholder;
     }
 
     disable(disabledReason) {
         this.inputEl.disabled = true;
+        this.inputEl.value = '';
         if (disabledReason) {
             this.inputEl.title = disabledReason;
+            this.inputEl.placeholder = disabledReason;
         }
         this.closeSuggestionsDropdown();
     }
