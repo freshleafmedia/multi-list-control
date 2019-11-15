@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2019-11-15
+
+### Fixed
+- Fixes drag-and-drop errors
+
 ## [1.1.0] - 2019-10-31
 
 ### Changed
@@ -56,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/freshleafmedia/multi-list-control/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/freshleafmedia/multi-list-control/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/freshleafmedia/multi-list-control/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/freshleafmedia/multi-list-control/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/freshleafmedia/multi-list-control/compare/0.3.0...1.0.0
 [0.3.0]: https://github.com/freshleafmedia/multi-list-control/compare/0.2.0...0.3.0

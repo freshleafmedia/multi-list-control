@@ -90,6 +90,13 @@ export default class List {
         });
         this.optionListEl.addEventListener('dragend', e => {
             this.dragSource.style.display = 'block';
+
+            if (this.dragOverTarget === null) {
+                this.dragSource = null;
+                this.removeDragPlaceholder();
+                return;
+            }
+
             this.dragPlaceholder.insertAdjacentElement('afterend', this.dragSource);
             if (this.dragOverDirection === 0) {
                 this.reorderItemBefore(this.dragSource.dataset.id, this.dragOverTarget.dataset.id);
@@ -97,6 +104,8 @@ export default class List {
                 this.reorderItemAfter(this.dragSource.dataset.id, this.dragOverTarget.dataset.id);
             }
             this.removeDragPlaceholder();
+            this.dragSource = null;
+            this.dragOverTarget = null;
         });
     }
 
