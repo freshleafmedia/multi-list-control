@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Fixes drag-and-drop errors
+
 ## [1.1.0] - 2019-10-31
 
 ### Changed
